@@ -1,0 +1,40 @@
+import Artefactos.*
+import Departamentos.*
+
+test "un depto de 120 metros cuadrados, 5 habitaciones, en hurlingham. Tiene una estufa de cuarzo, un aire de 2400 frigorias,
+	frio calor, y una mesa de 80 de altura de patas, y bordes luminosos. Es espacioso, el consumo eléctrico es 2880 watts/hora, 
+	el accesorio más alto es la mesa, tiene calefacción, y tiene dos artículos de alto consumo (la estufa y el aire)." 
+{	
+	assert.that(deptoUno.espacioso())
+	assert.equals(2880, deptoUno.consumoElectrico())
+	assert.that(deptoUno.tieneCalefaccion())
+	assert.equals(2, deptoUno.cantidadArtefactosAltoConsumo())
+	assert.equals(mesaUno, deptoUno.accesorioMasAlto())
+	assert.equals([estufaDeCuarzo,aireUno], deptoUno.artefactosAltoConsumo())
+}
+
+test "un departamento de 50 metros cuadrados, 2 habitaciones, en Villa Tesei. Tiene un aire acondicionado frío solo
+	de 3000 frigorías, y una mesa con 25 centímetros de altura de patas sin borde luminoso. Es espacioso, el consumo 
+	eléctrico es 1350 watts/hora, el accesorio más alto es el aire, no tiene calefacción, y tiene un artículo de 
+	alto consumo (el aire)."
+{
+		
+	assert.that(deptoDos.espacioso())
+	assert.equals(1350, deptoDos.consumoElectrico())
+	assert.equals(aireDos, deptoDos.accesorioMasAlto())
+	assert.notThat(deptoDos.tieneCalefaccion())
+	assert.equals(1,deptoDos.cantidadArtefactosAltoConsumo())
+	assert.equals([aireDos],deptoDos.artefactosAltoConsumo())	
+}
+
+test "un departamento de 60 metros cuadrados, 4 habitaciones, en Villa Tesei. Tiene un aire acondicionado frío/calor 
+	de 1000 frigorías, y una mesa con 75 centímetros de altura de patas sin borde luminoso. No es espacioso, 
+	el consumo eléctrico es 1450 watts/hora, el accesorio más alto es la mesa, tiene calefacción, y no tiene 
+	artículos de alto consumo."
+{
+	assert.notThat(deptoTres.espacioso())
+	assert.equals(1450,deptoTres.consumoElectrico())
+	assert.equals(mesaTres,deptoTres.accesorioMasAlto())
+	assert.that(deptoTres.tieneCalefaccion())
+	assert.equals(0,deptoTres.cantidadArtefactosAltoConsumo())
+}

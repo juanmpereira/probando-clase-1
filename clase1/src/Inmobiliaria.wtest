@@ -1,0 +1,15 @@
+import Inmobiliaria.*
+import Departamentos.*
+import Artefactos.*
+
+test "Una inmobiliaria que tiene en alquiler los tres departamentos descriptos en el punto anterior. Los departamentos 
+	familiares son el primero y el tercero. Los barrios son Villa Tesei y Hurlingham. Tolera el invierno. Puede certificar 
+	bajo consumo para 3000 watts/hora, no puede para 2000 watts/hora."
+{	
+	assert.that(deptoUno.familiar())
+	assert.that(deptoTres.familiar())
+	assert.equals(["Hurlingham","Villa Tesei"].asSet(), inmobiliariaUno.barrioCadaDepto())
+	assert.that(inmobiliariaUno.toleraInvierno())
+	assert.that(inmobiliariaUno.puedeCertificarBajoConsumo(3000))
+	assert.notThat(inmobiliariaUno.puedeCertificarBajoConsumo(2000))
+}
